@@ -1,0 +1,222 @@
+import { StyleSheet } from "react-native";
+// 获取屏幕信息
+var dimensions = require("Dimensions");
+// 获取屏幕的宽度和高度
+var { width, height } = dimensions.get("window");
+export default styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        width: width,
+        backgroundColor: "#f6f6f8",
+    },
+    address:{
+        width:width,
+        height:111,
+        marginBottom:10,
+        flexDirection:"row",
+        backgroundColor:"#fff",
+        justifyContent:"space-between",
+    },
+    messageIcon:{
+        width:12,
+        height:44,
+        justifyContent:"space-between",
+        marginLeft:25,
+        marginTop:26,
+    },
+    user:{
+        width:12,
+        height:15,
+    },
+    message:{
+        width:248,
+        height:67.5,
+        marginTop:26,
+        justifyContent:"space-between",
+    },
+    mesTop:{
+        width:248,
+        height:15,
+        flexDirection:"row",
+        alignItems:"center",
+    },
+    name:{
+        height:15,
+        color:"#282828",
+        fontSize:13,
+        lineHeight:15,
+        marginRight:39,
+    },
+    name1:{
+        height:15,
+        color:"#282828",
+        fontSize:13,
+        lineHeight:15,
+    },
+    moren:{
+        width:29,
+        height:14,
+        marginLeft:14,
+    },
+    mesBottom:{
+        width:248,
+        height:33,
+        color:"#888",
+        fontSize:13,
+        lineHeight:16.5,
+    },
+    next:{
+        width:9,
+        height:17,
+        marginTop:26,
+        marginRight:12,
+    },
+    carList:{
+        width:width,
+        height:160,
+        backgroundColor:"#fff",
+        marginBottom: 10,
+    },
+    listTop:{
+        width:width,
+        height:110,
+        paddingTop: 10,
+        paddingBottom:10,
+        paddingLeft:10,
+        paddingRight:10,
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:'center',
+    },
+    giftImg:{
+        width:70,
+        height:90,
+    },
+    giftText:{
+        width:240,
+        height:90,
+        flexDirection:"column",
+    },
+    gt_1:{
+        width:240,
+        height:15,
+        fontSize:13,
+        color:"#000",
+        lineHeight:15,
+        marginBottom:9,
+    },
+    gt_2:{
+        width:240,
+        height:12,
+        fontSize:10,
+        color:"#888",
+        marginBottom:23,
+    },
+    gt_3:{
+        width:240,
+        height:30,
+        flexDirection:"row",
+        // alignItems:"center",
+        justifyContent:"space-between",
+    },
+    gt_3_left:{
+        width:88.5,
+        height:30,
+    },
+    gt_3_right:{
+        width:92,
+        height:24,
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"space-between",
+        backgroundColor:"#000",
+    },
+    left_price:{
+        fontSize:10,
+        color:"#888",
+    },
+    add:{
+        width:24,
+        height:24,
+        backgroundColor:"#ededed",
+    },
+    gt_3_figure:{
+        width:44,
+        height:24,
+    },
+    listBottom:{
+        width:width,
+        height:50,
+        borderTopWidth:1,
+        borderTopColor:"#f6f6f8",
+    },
+    gift:{
+        width:width,
+        height:50,
+        fontSize:14,
+        color:"#000",
+        textAlign:'right',
+        lineHeight:50,
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
+    count: {
+        width: width,
+        height: 49,
+        backgroundColor:"#fff",
+        borderTopWidth: 1,
+        borderTopColor: "#e5bec3",
+        borderBottomColor: "#d6d6d8",
+        flexDirection: 'row',
+    },
+    checkText: {
+        width: 261,
+        height: 49,
+        padding: 10,
+        flexDirection:"row",
+        justifyContent:"space-between",
+    },
+    checkBox: {
+        width: 65,
+        height: 49,
+        flexDirection:"row",
+    },
+    checkBtn: {
+        width: 114,
+        height: 51,
+        backgroundColor: "#ea4a4a",
+    },
+    check: {
+        textAlign: "center",
+        lineHeight: 49,
+        fontSize: 15,
+        color: "#fff",
+    },
+    checkImg: {
+        width: 24,
+        height: 24,
+        marginTop:2,
+    },
+    checkAll: {
+        height:51,
+        fontSize: 13,
+        lineHeight:33,
+        alignItems: 'center',
+        color: "#000",
+        marginLeft: 6,
+    },
+    checkPrice:{
+        width:103,
+        height:29,
+    },
+    acount:{
+        fontSize:12,
+        color:"#000",
+        textAlign:"right",
+    },
+    else:{
+        fontSize:12,
+        color:"#999",
+        textAlign:"right",
+    }
+})
