@@ -9,6 +9,7 @@ export default styles=StyleSheet.create({
         flexDirection: 'column',
         backgroundColor:"#fff",
         alignItems: 'center',
+        backgroundColor:"#f6f6f8"
     },
     bglogo:{
         width:width,
@@ -90,7 +91,7 @@ export default styles=StyleSheet.create({
       btncode:{
           width:60,
           height:18,
-          borderRadius:20,
+          borderRadius:10,
           position:"absolute",
           bottom:8,
           right:0,

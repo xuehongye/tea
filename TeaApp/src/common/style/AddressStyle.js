@@ -1,67 +1,81 @@
-import {StyleSheet} from "react-native";
-var dimensions=require("Dimensions");
-var {width,height}=dimensions.get("window");export default styles=StyleSheet.create({
-    address:{
-        width:width,
-        height:111,
-        marginBottom:10,
-        flexDirection:"row",
-        backgroundColor:"#fff",
-        paddingLeft: 24,
-        paddingRight: 24,
-    },
-    messageIcon:{
-        width:12,
-        height:44,
-        justifyContent:"space-between",
-        marginTop:26,
-    },
-    user:{
-        width:12,
-        height:15,
-    },
-    message:{
-        flex:1,
-        // width:248,
-        height:67.5,
-        marginTop:26,
-        marginLeft:22,
-        justifyContent:"space-between",
-    },
-    mesTop:{
-        width:248,
-        height:15,
-        flexDirection:"row",
+import { StyleSheet } from "react-native";
+var dimensions = require("Dimensions");
+var { width, height } = dimensions.get("window"); export default styles = StyleSheet.create({
+    address: {
+        marginBottom: 10, 
+        backgroundColor: "#fff",
         alignItems:"center",
     },
-    name:{
-        height:15,
-        color:"#282828",
-        fontSize:13,
-        lineHeight:15,
-        marginRight:39,
+    addTop: {
+        width: width,
+        flexDirection: "row",
+        paddingLeft: 24,
+        paddingRight: 24,
+        alignItems:"center",
     },
-    name1:{
-        height:15,
-        color:"#282828",
-        fontSize:13,
-        lineHeight:15,
+    messageIcon: {
+        width: 12,
+        height: 55,
+        justifyContent: "space-between",
     },
-    moren:{
-        width:29,
-        height:14,
-        marginLeft:14,
+    user: {
+        width: 12,
+        height: 15,
     },
-    mesBottom:{
-        width:248,
-        height:33,
-        color:"#888",
-        fontSize:13,
-        lineHeight:16.5,
+    message: {
+        flex: 1,
+        // width:248,
+        marginTop: 10,
+        marginLeft: 22,
+        justifyContent: "space-between",
+        marginBottom:10
     },
-    next:{
-        width:9,
-        height:17,
-        marginTop:26,
+    mesTop: {
+        flexDirection: "row",
+        alignItems: "center",
     },
+    name: {
+        color: "#282828",
+        fontSize: 13,
+        lineHeight: 25,
+        marginRight: 39,
+    },
+    name1: {
+        color: "#282828",
+        fontSize: 13,
+        lineHeight: 25,
+    },
+    moren: {
+        width: 29,
+        height: 14,
+        marginLeft: 14,
+    },
+    mesBottom: {
+        flexWrap: 'wrap',
+        color: "#888",
+        fontSize: 13,
+        lineHeight: 25,
+    },
+    next: {
+        width: 9,
+        height: 17,
+        marginTop: 26,
+    },
+    addBom:{
+        width:310,
+        height:42.5,
+        flexDirection:"row",
+        justifyContent:"flex-end",
+        borderTopColor:"#eee",
+        borderTopWidth:1,
+    },
+    edit:{
+        paddingLeft:10,
+        paddingRight:10,
+        
+    },
+    delete:{
+        paddingLeft:10,
+        paddingRight:10,
+    }
 })

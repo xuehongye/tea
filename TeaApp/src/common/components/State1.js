@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Image, Text, View } from "react-native";
+import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native";
 import WuliuView from "../../user/components/WuliuView"
 
 
@@ -40,13 +40,17 @@ export default class State1 extends React.Component {
                     </View>
                 </View>
                 <View style={styles.btn}>
-                    <Text style={styles.btnText} onPress={()=>{
-                        this.props.navigator.push({
-                            params:{name:"wuliu"},
-                            component:WuliuView
-                        })
-                    }}>查看物流</Text>
-                    <Text style={styles.btnText}>确认收货</Text>
+                    <TouchableOpacity   style={styles.btnText} onPress={() => {
+                            this.props.navigator.push({
+                                params: { name: "wuliu" },
+                                component: WuliuView
+                            })
+                        }}>
+                        <Text style={styles.btnCon}>查看物流</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity  style={styles.btnText}>
+                        <Text style={styles.btnCon}>确认收货</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
@@ -80,15 +84,15 @@ const styles = StyleSheet.create({
     conTop: {
         width: width,
         flex: 1,
-        flexDirection:"row",
+        flexDirection: "row",
         alignItems: 'center',
     },
     conBottom: {
         width: width,
         height: 34,
-        flexDirection:"row",
-        justifyContent:"flex-end",
-        paddingRight:20,
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        paddingRight: 20,
     },
     conImg: {
         width: 102,
@@ -99,70 +103,70 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 90,
     },
-        text1:{
-        fontSize:14,
-        color:"#333",
-        lineHeight:16,
+    text1: {
+        fontSize: 14,
+        color: "#333",
+        lineHeight: 16,
         flexWrap: 'wrap',
-        paddingRight:12
+        paddingRight: 12
     },
-    text2:{
-        fontSize:12,
-        color:"#888",
-        marginTop:10,
+    text2: {
+        fontSize: 12,
+        color: "#888",
+        marginTop: 10,
     },
-    text3:{
-        flexDirection:"row",
-        marginTop:20,
+    text3: {
+        flexDirection: "row",
+        marginTop: 20,
     },
-    txt1:{
-        fontSize:10,
-        color:"#333",
-        lineHeight:14,
+    txt1: {
+        fontSize: 10,
+        color: "#333",
+        lineHeight: 14,
     },
-    txt2:{
-        fontSize:13,
-        color:"#333",
-        lineHeight:14,
+    txt2: {
+        fontSize: 13,
+        color: "#333",
+        lineHeight: 14,
     },
-    txt3:{
-        fontSize:10,
-        color:"#333",
-        lineHeight:14,
+    txt3: {
+        fontSize: 10,
+        color: "#333",
+        lineHeight: 14,
     },
-    txt4:{
-        fontSize:12,
-        color:"#888",
-        lineHeight:14,
+    txt4: {
+        fontSize: 12,
+        color: "#888",
+        lineHeight: 14,
     },
-    txt5:{
-        fontSize:12,
-        color:"#888",
-        lineHeight:14,
-        textDecorationLine:"line-through"
+    txt5: {
+        fontSize: 12,
+        color: "#888",
+        lineHeight: 14,
+        textDecorationLine: "line-through"
     },
-    txt6:{
-        fontSize:13,
-        color:"#ea4a4a",
-        lineHeight:14,
+    txt6: {
+        fontSize: 13,
+        color: "#ea4a4a",
+        lineHeight: 14,
     },
-    txt7:{
-        fontSize:14,
-        color:"#333",
-        lineHeight:34,
+    txt7: {
+        fontSize: 14,
+        color: "#333",
+        lineHeight: 34,
     },
-    txt8:{
-        fontSize:10,
-        color:"#333",
-        lineHeight:34,
+    txt8: {
+        fontSize: 10,
+        color: "#333",
+        lineHeight: 34,
     },
-    txt9:{
-        fontSize:12,
-        color:"#888",
-        lineHeight:14,
-        flex:1,
-        textAlign:"right",
-        marginRight:20,
+    txt9: {
+        fontSize: 12,
+        color: "#888",
+        lineHeight: 14,
+        flex: 1,
+        textAlign: "right",
+        marginRight: 20,
     },
     btn: {
         width: width,
@@ -172,16 +176,18 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
         paddingRight: 10,
     },
-    btnText: {  
+    btnText: {
         width: 108,
         height: 32,
         borderRadius: 3,
         borderWidth: 1,
         borderColor: "#c4c4c4",
+        marginLeft: 20,
+    },
+    btnCon:{
         fontSize: 14,
         color: "#333",
-        lineHeight: 32,
+        lineHeight: 30,
         textAlign: "center",
-        marginLeft: 20,
     }
 })

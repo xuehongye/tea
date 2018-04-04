@@ -6,13 +6,12 @@ var {width,height}=dimensions.get("window");
 export default styles=StyleSheet.create({
     container:{
         width:width,
+        backgroundColor:"#f6f6f8"
     },
     header:{
         width:width,
         height:44,
-        position:"absolute",
-        top:0,
-        left:0,
+        backgroundColor:"#fff"
     },
     headerTitle:{
         width:width,
@@ -28,7 +27,43 @@ export default styles=StyleSheet.create({
     },
     scroll:{
         width:width,
-        marginTop: 44,
+    },
+    vedio:{
+        marginTop:20,
+    },
+    vedioTit:{
+        fontSize:15,
+        color:"#333",
+        paddingLeft: 12,
+        paddingRight: 12,
+        lineHeight:20,
+    },
+    vedioImg:{
+        height:255.45,
+    },
+    fullScreen: {
+        width:width,
+        height:255.45,
+    },
+    foot:{
+        marginTop:30,
+        alignItems: 'center',
+        paddingLeft:24,
+        paddingRight:24,
+        marginBottom: 60,
+    },
+    f1:{
+        fontSize:14,
+        lineHeight:20,
+        color:"#888",
+        fontWeight:"900",
+        textAlign:"center"
+    },
+    f2:{
+        fontSize:14,
+        lineHeight:20,
+        color:"#888",
+        textAlign:"center",
+        flexWrap: 'wrap',
     }
-
 })

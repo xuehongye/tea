@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, Image, Text, View } from "react-native";
+import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native";
 import PaymentView from "../../user/components/PaymentView"
 
 
@@ -40,9 +40,9 @@ export default class State5 extends React.Component {
                     </View>
                 </View>
                 <View style={styles.btn}>
-                    <View style={styles.btnCon}>
+                    <View style={styles.btnConn}>
                         <View style={styles.btnTime}>
-                            <Image style={styles.timeImg} source={require("../../user/image/car/icontime.png")}/>
+                            <Image style={styles.timeImg} source={require("../../user/image/car/icontime.png")} />
                             <Text style={styles.timeText}>剩余时间</Text>
                         </View>
                         <View style={styles.count}>
@@ -53,12 +53,14 @@ export default class State5 extends React.Component {
                             <Text style={styles.count1}>03</Text>
                         </View>
                     </View>
-                    <Text style={styles.btnText} onPress={()=>{
-                        this.props.navigator.push({
-                            params:{name:"payment"},
-                            component:PaymentView
-                        })
-                    }}>付款</Text>
+                    <TouchableOpacity style={styles.btnText} onPress={() => {
+                            this.props.navigator.push({
+                                params: { name: "payment" },
+                                component: PaymentView
+                            })
+                        }}>
+                        <Text style={styles.btnCon}>付款</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         )
@@ -92,15 +94,15 @@ const styles = StyleSheet.create({
     conTop: {
         width: width,
         flex: 1,
-        flexDirection:"row",
+        flexDirection: "row",
         alignItems: 'center',
     },
     conBottom: {
         width: width,
         height: 34,
-        flexDirection:"row",
-        justifyContent:"flex-end",
-        paddingRight:20,
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        paddingRight: 20,
     },
     conImg: {
         width: 102,
@@ -111,131 +113,132 @@ const styles = StyleSheet.create({
         flex: 1,
         height: 90,
     },
-        text1:{
-        fontSize:14,
-        color:"#333",
-        lineHeight:16,
+    text1: {
+        fontSize: 14,
+        color: "#333",
+        lineHeight: 16,
         flexWrap: 'wrap',
-        paddingRight:12
+        paddingRight: 12
     },
-    text2:{
-        fontSize:12,
-        color:"#888",
-        marginTop:10,
+    text2: {
+        fontSize: 12,
+        color: "#888",
+        marginTop: 10,
     },
-    text3:{
-        flexDirection:"row",
-        marginTop:20,
+    text3: {
+        flexDirection: "row",
+        marginTop: 20,
     },
-    txt1:{
-        fontSize:10,
-        color:"#333",
-        lineHeight:14,
+    txt1: {
+        fontSize: 10,
+        color: "#333",
+        lineHeight: 14,
     },
-    txt2:{
-        fontSize:13,
-        color:"#333",
-        lineHeight:14,
+    txt2: {
+        fontSize: 13,
+        color: "#333",
+        lineHeight: 14,
     },
-    txt3:{
-        fontSize:10,
-        color:"#333",
-        lineHeight:14,
+    txt3: {
+        fontSize: 10,
+        color: "#333",
+        lineHeight: 14,
     },
-    txt4:{
-        fontSize:12,
-        color:"#888",
-        lineHeight:14,
+    txt4: {
+        fontSize: 12,
+        color: "#888",
+        lineHeight: 14,
     },
-    txt5:{
-        fontSize:12,
-        color:"#888",
-        lineHeight:14,
-        textDecorationLine:"line-through"
+    txt5: {
+        fontSize: 12,
+        color: "#888",
+        lineHeight: 14,
+        textDecorationLine: "line-through"
     },
-    txt6:{
-        fontSize:13,
-        color:"#ea4a4a",
-        lineHeight:14,
+    txt6: {
+        fontSize: 13,
+        color: "#ea4a4a",
+        lineHeight: 14,
     },
-    txt7:{
-        fontSize:14,
-        color:"#333",
-        lineHeight:34,
+    txt7: {
+        fontSize: 14,
+        color: "#333",
+        lineHeight: 34,
     },
-    txt8:{
-        fontSize:10,
-        color:"#333",
-        lineHeight:34,
+    txt8: {
+        fontSize: 10,
+        color: "#333",
+        lineHeight: 34,
     },
-    txt9:{
-        fontSize:12,
-        color:"#888",
-        lineHeight:14,
-        flex:1,
-        textAlign:"right",
-        marginRight:20,
+    txt9: {
+        fontSize: 12,
+        color: "#888",
+        lineHeight: 14,
+        flex: 1,
+        textAlign: "right",
+        marginRight: 20,
     },
     btn: {
-        width: width,   
+        width: width,
         height: 58,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
         paddingRight: 10,
-        paddingLeft:10,
+        paddingLeft: 10,
     },
-    btnCon:{
-        width:78,
-        height:42,
+    btnConn: {
+        width: 78,
+        height: 42,
         justifyContent: 'space-between',
-        alignItems:"center",
+        alignItems: "center",
     },
-    btnTime:{
-        flexDirection:"row",
-        alignItems:"center",
+    btnTime: {
+        flexDirection: "row",
+        alignItems: "center",
         justifyContent: 'space-between',
-        height:15,
+        height: 15,
     },
-    timeImg:{
-        width:14,
-        height:14,
+    timeImg: {
+        width: 14,
+        height: 14,
     },
-    timeText:{
-        fontSize:12,
-        color:"#333",
-        lineHeight:14,
+    timeText: {
+        fontSize: 12,
+        color: "#333",
+        lineHeight: 14,
     },
-    count:{
-        flexDirection:"row",
-        justifyContent:"space-between",
+    count: {
+        flexDirection: "row",
+        justifyContent: "space-between",
     },
-    count1:{
-        width:20,
-        height:20,
-        backgroundColor:"#ea4a4a",
-        color:"#fff",
-        fontSize:13,
-        lineHeight:20,
-        textAlign:"center",
-        borderRadius:3
+    count1: {
+        width: 20,
+        height: 20,
+        backgroundColor: "#ea4a4a",
+        color: "#fff",
+        fontSize: 13,
+        lineHeight: 20,
+        textAlign: "center",
+        borderRadius: 3
     },
-    count2:{
-        fontSize:13,
-        lineHeight:20,
-        color:"#333",  
+    count2: {
+        fontSize: 13,
+        lineHeight: 20,
+        color: "#333",
     },
-    btnText: {  
+    btnText: {
         width: 108,
         height: 32,
         borderRadius: 3,
         borderWidth: 1,
         borderColor: "#c4c4c4",
+        marginLeft: 20,
+    },
+    btnCon:{
         fontSize: 14,
         color: "#333",
-        lineHeight: 32,
+        lineHeight: 30,
         textAlign: "center",
-        marginLeft: 20,
- 
     }
 })

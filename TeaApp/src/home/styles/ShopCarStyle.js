@@ -12,9 +12,9 @@ export default styles = StyleSheet.create({
     header: {
         width: width,
         height: 44,
-        backgroundColor:"#fff",
-        borderBottomColor:"#d6d6d8",
-        borderBottomWidth:1
+        backgroundColor: "#fff",
+        borderBottomColor: "#d6d6d8",
+        borderBottomWidth: 1
     },
     headerTitle: {
         width: width,
@@ -24,47 +24,44 @@ export default styles = StyleSheet.create({
         lineHeight: 44,
         textAlign: "center",
     },
-    teaBanner: {
-        width: width,
-        height: 275,
-    },
-    backbtn: {
+    save: {
         position: "absolute",
-        left: 12,
-        top: 11,
-    },
-    backImg: {
-        width: 22,
-        height: 22,
-
+        height: 44,
+        right: 12,
+        top: 0,
+        color: "#333",
+        fontSize: 14,
+        lineHeight: 44,
     },
     scroll: {
         width: width,
-        marginTop:10,
-        flex:1,
+        marginTop: 10,
+        flex: 1,
     },
     count: {
         width: width,
         height: 49,
-        backgroundColor:"#fff",
+        backgroundColor: "#fff",
         borderTopWidth: 1,
         borderTopColor: "#e5bec3",
         borderBottomColor: "#d6d6d8",
         flexDirection: 'row',
-        alignItems:"center",
+        alignItems: "center",
+        justifyContent: "space-between"
     },
     checkText: {
-        width: 261,
+        flex: 1,
         height: 49,
         padding: 10,
-        flexDirection:"row",
-        justifyContent:"space-between",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
     },
     checkBox: {
         width: 65,
         height: 49,
-        flexDirection:"row",
-        alignItems:"center",
+        flexDirection: "row",
+        alignItems: "center",
     },
     checkBtn: {
         width: 114,
@@ -80,28 +77,68 @@ export default styles = StyleSheet.create({
     checkImg: {
         width: 24,
         height: 24,
-        marginBottom:16,
     },
     checkAll: {
-        height:51,
+        height: 51,
         fontSize: 13,
-        lineHeight:33,
+        lineHeight: 49,
         alignItems: 'center',
         color: "#000",
         marginLeft: 6,
     },
-    checkPrice:{
-        width:103,
-        height:29,
+    checkPrice: {
+        width: 103,
+        height: 29,
     },
-    acount:{
-        fontSize:12,
-        color:"#000",
-        textAlign:"right",
+    acount: {
+        fontSize: 12,
+        color: "#000",
+        textAlign: "right",
     },
-    else:{
-        fontSize:12,
-        color:"#999",
-        textAlign:"right",
-    }
+    else: {
+        fontSize: 12,
+        color: "#999",
+        textAlign: "right",
+    },
+    move: {
+        width: 174,
+        height: 26,
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    addmove: {
+        width: 99,
+        height: 26,
+        borderRadius: 12,
+        borderWidth: 1,
+        borderColor: "#f7ae3c",
+    },
+    addText: {
+        width: 99,
+        height: 26,
+        color: "#f7ae3c",
+        fontSize: 13,
+        textAlign: "center",
+        lineHeight: 26,
+    },
+    delete: {
+        width: 60,
+        height: 26,
+        borderRadius: 12,
+        borderWidth: 1,
+        borderColor: "#ea4a4a",
+    },
+    deleteText: {
+        width: 60,
+        height: 26,
+        color: "#ea4a4a",
+        fontSize: 13,
+        textAlign: "center",
+        lineHeight: 26,
+    },
+    checkImg1: {
+        width: 24,
+        height: 24,
+        marginTop:2,
+    },
 })

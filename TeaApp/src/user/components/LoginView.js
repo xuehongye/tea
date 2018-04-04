@@ -5,6 +5,7 @@ import { DeviceEventEmitter } from 'react-native';
 
 import styles from "../styles/LoginStyle";
 import RegView from './RegView';
+import ForgetPassView from "./ForgetPassView";
 export default class LoginView extends React.Component {
     constructor(props) {
         super(props);
@@ -78,12 +79,12 @@ export default class LoginView extends React.Component {
                         <Text style={{ color: "#ea4c48" }}>注册</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                    //    onPress={()=>{
-                    //         this.props.navigator.push({
-                    //             params: { name: 'register' },
-                    //               component:RegView
-                    //           })
-                    //     }}
+                       onPress={()=>{
+                            this.props.navigator.push({
+                                params: { name: 'forgetPass' },
+                                  component:ForgetPassView
+                              })
+                        }}
                     >
                         <Text style={{ color: "#ea4c48" }}>忘记密码?</Text>
                     </TouchableOpacity>

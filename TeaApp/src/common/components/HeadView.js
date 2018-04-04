@@ -29,7 +29,9 @@ export default class HeadView extends React.Component {
                         </TouchableOpacity>
                     </View>
                 }
-                 {this.props.hidenleftBtn ?null:<Text style={styles.save}>{this.props.save}</Text>}
+                <TouchableOpacity disabled={!!this.props.save} style={styles.leftBtn}>
+                    {this.props.hidenleftBtn ? null : <Text style={styles.save} aa={this.props.aa}>{this.props.save}</Text>}
+                </TouchableOpacity>
             </View>
         )
     }

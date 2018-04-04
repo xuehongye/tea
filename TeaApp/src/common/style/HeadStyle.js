@@ -33,11 +33,14 @@ export default styles = StyleSheet.create({
         height: 22,
 
     },
-    save:{
+    leftBtn:{
+        height:44,
         position:"absolute",
         height:44,
         right:12,
         top:0,
+    },
+    save:{
         color:"#333",
         fontSize:14,
         lineHeight: 44,

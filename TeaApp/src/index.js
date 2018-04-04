@@ -12,9 +12,13 @@ import TeaView from "./home/components/TeaView";
 import ExperienceView from "./home/components/ExperienceView";
 import ShopCarView from "./home/components/ShopCarView";
 import MineView from "./home/components/MineView";
+import ShoppingCarPage from "./user/components/ShoppingCarPage"
 
 import FetchView from "./data/components/FetchData";
 import DataView from "./data/components/DataView";
+import Demo from "./data/components/Demo"
+import DetailView from "./user/components/DetailView";
+import CountDown from "./common/components/CountDown"
 
 const TAB_NORMAL_1 = require("./user/image/index/tabbuttonhome.png");
 const TAB_PRESS_1 = require("./user/image/index/tabbuttonhomedefault.png");
@@ -70,8 +74,8 @@ export default class index extends React.Component {
                 {this._renderTabarItems("home", "首页", TAB_NORMAL_1, TAB_PRESS_1, HomeView)}
                 {this._renderTabarItems('tea', "茶园", TAB_NORMAL_2, TAB_PRESS_2, TeaView)}
                 {this._renderTabarItems("experience", "体验店", TAB_NORMAL_3, TAB_PRESS_3, ExperienceView)}
-                {this._renderTabarItems("shopCar", "购物车", TAB_NORMAL_4, TAB_PRESS_4, ShopCarView)}
-                {this._renderTabarItems("mine", "我的", TAB_NORMAL_5, TAB_PRESS_5, MineView)}
+                {this._renderTabarItems("shopCar", "购物车", TAB_NORMAL_4, TAB_PRESS_4, ShoppingCarPage)}
+                {this._renderTabarItems("mine", "我的", TAB_NORMAL_5, TAB_PRESS_5,MineView)}
             </TabNavigator>
         )
     }

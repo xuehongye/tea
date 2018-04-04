@@ -4,6 +4,8 @@ import HeadView from '../../common/components/HeadView';
 import AddressView from '../../common/components/AddressView';
 import styles from "../styles/shipAddressView";
 import AddAddressView from "./AddAddressView";
+
+
 export default class shipAddressView extends React.Component {
     render() {
         return (

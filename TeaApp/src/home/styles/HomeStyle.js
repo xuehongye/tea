@@ -7,6 +7,7 @@ export default styles = StyleSheet.create({
     container: {
         flex: 1,
         width: width,
+        backgroundColor:"#f6f6f8"
     },
     header: {
         width: width,
@@ -48,6 +49,10 @@ export default styles = StyleSheet.create({
         position: "absolute",
         left: 10,
         bottom: 8,
+    },
+    newImg: {
+        width: 30,
+        height: 30,
     },
     RichScanImg: {
         width: 30,
@@ -162,46 +167,46 @@ export default styles = StyleSheet.create({
         paddingRight: 10,
     },
     every: {
-        width: 168,
-        height: 266,
+        width: 160,
+        height: 260,
         // backgroundColor: "red",
         marginBottom: 25,
     },
     imgBorder:{
-        width: 168,
-        height: 186,
+        width: 160,
+        height: 178,
         borderTopLeftRadius:20,
         borderTopRightRadius:20,
         backgroundColor:"#000",
         alignItems:"center",
     },
     teaImg: {
-        width: 168,
-        height: 186,
+        width: 160,
+        height: 178,
     },
     teaText:{
-        width:168,
-        height:66,
+        width:160,
+        flex:1,
         flexDirection: "column",
         justifyContent: 'space-between',
         alignItems:"center",
         marginTop:9,
     },
     teaTitle:{
-        width:168,
+        width:160,
         height:14,
         fontSize:12,
         color:"#282828",
     },
     teaPrice:{
-        width:168,
+        width:160,
         height:43,
         flexDirection: "column",
         justifyContent: 'space-between',
         alignItems:"center",
     },
     bigPrice:{
-        width:168,
+        width:160,
         height:15,
         flexDirection: "row",
         justifyContent: 'space-between',
@@ -211,7 +216,7 @@ export default styles = StyleSheet.create({
         color:"#888",
     },
     smallPrice:{
-        width:168,
+        width:160,
         height:15,
         flexDirection: "row",
         justifyContent: 'flex-start',

@@ -6,6 +6,7 @@ export default styles = StyleSheet.create({
         flex:1,
         width: width,
         justifyContent:"space-between",
+        backgroundColor:"#f6f6f8"
     },
     // scroll:{
     //     flex:1,
