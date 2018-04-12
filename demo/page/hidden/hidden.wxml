@@ -1,0 +1,31 @@
+<view class='text'>
+  <text>方法一</text>
+</view>
+<view wx:for="{{list}}" wx:key="content" wx:for-index="key">
+  <view class='title' data-index='{{key}}' bindtap='hiddenBtn'>
+    <label>aaa {{item.id+1}}</label>
+  </view>
+  <view hidden='{{item.hidden}}'>
+    <view class='line'></view>
+    <view class='content'>
+      <label>bbb</label>
+    </view>
+  </view>
+  <view class='line_bottom'></view>
+</view>
+
+<view class='text'>
+  <text>方法二</text>
+</view>
+<view wx:for="{{listCon}}" wx:key="content" wx:for-index="key">
+  <view class='title' data-index='{{key}}' bindtap='hiddenBtnCon'>
+    <label>aaa {{item.id+1}}</label>
+  </view>
+  <view class='{{item.hidden == true? "hide":"show"}}'>
+    <view class='line'></view>
+    <view class='content'>
+      <label>bbb</label>
+    </view>
+  </view>
+  <view class='line_bottom'></view>
+</view>
