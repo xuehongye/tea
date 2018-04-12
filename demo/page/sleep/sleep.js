@@ -17,6 +17,8 @@ Page({
     userInfo: {},           //用户信息存放
     selectCon: "",          //临时用来存放框中数据
     id: 100000,
+    defaultValue:"没有或不知道",
+    textValue:"下一题"
   },
   onLoad: function () {
     this.getUserInfo();
@@ -74,6 +76,7 @@ Page({
       index: 0,
       id: 10000,
     })
+    this.getProgress();
   },
   alertTit: function (title) {
     wx.showToast({
