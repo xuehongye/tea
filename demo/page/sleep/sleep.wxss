@@ -21,6 +21,7 @@
   box-sizing: border-box;
   z-index: 999;
 }
+
 .proAfter {
   display: block;
   content: "";
@@ -110,7 +111,7 @@ scroll-view {
   border-radius: 20rpx;
   flex-wrap: wrap;
   line-height: 60rpx;
-  font-size: 26rpx;
+  font-size: 34rpx;
   padding: 10rpx;
   color: #333;
   position: relative;
@@ -138,8 +139,10 @@ scroll-view {
   background: #fff;
   border-radius: 20rpx;
   width: 78%;
-  margin-top: 40rpx;
+  margin-top: 70rpx;
   animation: rightFide 1s linear;
+  position: relative;
+  align-items: center;
 }
 
 @keyframes rightFide {
@@ -150,11 +153,12 @@ scroll-view {
 
   100% {
     opacity: 1;
-    margin-top: 40rpx;
+    margin-top: 70rpx;
   }
 }
 
 .selectCheck>view {
+  width: 100%;
   margin-bottom: 30rpx;
   height: 76rpx;
   border-radius: 20rpx;
@@ -172,6 +176,23 @@ scroll-view {
   margin-top: 40rpx;
 }
 
+.selectCheck>.boxTitle {
+  display: block;
+  content: "";
+  width: 300rpx;
+  height: 74rpx;
+  background: #7db876;
+  position: absolute;
+  left: -200rpx;
+  top: -36rpx;
+  border-radius: 40rpx;
+  color: #fff;
+  line-height: 74rpx;
+  padding-right: 30rpx;
+  text-align: right;
+  z-index: 999;
+}
+
 @keyframes rightFide1 {
   0% {
     opacity: 0;
@@ -183,12 +204,14 @@ scroll-view {
     margin-top: 40rpx;
   }
 }
+
 .referRight .userinfo-avatar {
   width: 64rpx;
   height: 64rpx;
   margin-left: 25rpx;
   border-radius: 50%;
 }
+
 .referRight>view {
   max-width: 520rpx;
   background: #fff;
@@ -196,11 +219,12 @@ scroll-view {
   border-radius: 20rpx;
   flex-wrap: wrap;
   line-height: 60rpx;
-  font-size: 26rpx;
+  font-size: 34rpx;
   padding: 10rpx;
   color: #333;
   position: relative;
 }
+
 .referRight>view:before {
   display: block;
   content: "";
@@ -213,4 +237,58 @@ scroll-view {
   border-top: 15rpx solid transparent;
   border-left: 15rpx solid #fff;
   border-bottom: 15rpx solid transparent;
+}
+
+.selectCheck checkbox-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.selectCheck checkbox-group .checkbox {
+  border-bottom: 1rpx solid #ccc;
+  padding: 20rpx;
+  height: 67rpx;
+  font-size: 34rpx;
+  color: #333;
+  align-items: center;
+  line-height: 67rpx;
+}
+
+.selectCheck checkbox-group .checkbox:last-child {
+  border-bottom: none;
+}
+
+.selectCheck checkbox-group .checkbox checkbox {
+  margin-right: 34rpx;
+}
+
+.selectCheck .defaultValue {
+  width: 60%;
+  height: 80rpx;
+  border: 1rpx solid #7db876;
+  border-radius: 40rpx;
+  line-height: 80rpx;
+  color: #7db876;
+  margin: 40rpx 0 60rpx;
+  box-sizing:border-box;
+}
+.selectCheck .defaultValue.activeValue{
+  border:none;
+  background: #7db876;
+  color:#fff;
+}
+.selectCheck textarea{
+  width:552rpx;
+  color:#333;
+  font-size: 32rpx;
+  line-height: 60rpx;
+  min-height:300rpx;
+}
+.selectCheck .checkYear{
+  border:1px solid #cecbcb;
+  margin-top: 40rpx;
+}
+.selectCheck picker-view-column {
+  text-align: center;
 }

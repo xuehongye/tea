@@ -2,26 +2,139 @@
 <!-- <view class="img">
   <image src="../../image/jcr.png"></image>
 </view> -->
+
+<!--进度条  -->
 <view class='progress'>
   <view class='proAfter' style="width:{{width}}rpx"></view>
 </view>
-<scroll-view scroll-y="true">
+<scroll-view scroll-y="true" style="margin-top:80rpx;">
   <view class='refer'>
     <view id="drawId">
+      <!--左边题目  -->
       <view class='referTit'>
         <image src="../../image/photo.png"></image>
         <view>{{postItem.name}}</view>
       </view>
+      <!--中间可选选项  -->
       <block wx:if="{{hidden}}">
-        <view class='selectCheck'>
-          <view data-item="{{index}}"  wx:for="{{postItem.content}}" wx:for-index="index" wx:for-item="item" bindtap="btnOpClick" style="background:{{id==index?selectBg:defaultBg}};border:1rpx solid {{id==index?'':defaultBd}};color:{{id==index?selectText:defaultText}}" bindtap='selectBtn'>{{item}}</view>
-        </view>
+        <!--state 1  单选  -->
+        <block wx:if="{{postItem.state==1}}">
+          <view class='selectCheck'>
+            <view data-item="{{index}}" wx:for="{{postItem.content}}" wx:for-index="index" wx:for-item="item" bindtap="btnOpClick" style="background:{{id==index?selectBg:defaultBg}};border:1rpx solid {{id==index?'':defaultBd}};color:{{id==index?selectText:defaultText}}"
+              bindtap='selectBtn'>{{item}}</view>
+          </view>
+        </block>
+        <!--state 2 多选  -->
+        <block wx:elif='{{postItem.state==2}}'>
+          <view class='selectCheck'>
+            <view class='boxTitle'>多项选择</view>
+            <checkbox-group bindchange="checkboxChange">
+              <label class="checkbox" wx:for="{{postItem.content}}">
+                <checkbox value="{{item}}" checked="{{item.checked}}" />{{item}}
+              </label>
+            </checkbox-group>
+            <view class="{{isSelect?'defaultValue activeValue':'defaultValue'}}" data-item='{{index}}' bindtap='selectBtn'>{{defaultValue}}</view>
+          </view>
+        </block>
+        <!--state 3 填空  -->
+        <block wx:elif='{{postItem.state==3}}'>
+          <view class='selectCheck'>
+            <textarea placeholder='{{item}}' bindblur='areaChange' wx:for="{{postItem.content}}" placeholder-style='color:#ccc;font-size:32rpx;' />
+            <view data-item='{{index}}' bindtap='selectBtn' class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
+          </view>
+        </block>
+        <!--state 4 日期  -->
+        <block wx:elif='{{postItem.state==4}}'>
+          <view class='selectCheck'>
+            <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+              <picker-view-column>
+                <view wx:for="{{hours}}" style="line-height: 50px">{{item}}时</view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{minutes}}" style="line-height: 50px">{{item}}分</view>
+              </picker-view-column>
+            </picker-view>
+            <view class="checkYear">{{hour}}时{{minute}}分</view>
+            <view bindtap='selectBtn' class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
+          </view>
+        </block>
+        <!--state 5 年月日  -->
+        <block wx:elif='{{postItem.state==5}}'>
+          <view class='selectCheck'>
+            <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+              <picker-view-column>
+                <view wx:for="{{years}}" style="line-height: 50px">{{item}}年</view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
+              </picker-view-column>
+              <picker-view-column>
+                <view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
+              </picker-view-column>
+            </picker-view>
+            <view class="checkYear">{{year}}年{{month}}月{{day}}日</view>
+            <view bindtap='selectBtn' class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
+          </view>
+        </block>
+        <!--state 6 数量  -->
+        <block wx:elif='{{postItem.state==6}}'>
+          <view class='selectCheck'>
+            <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+              <picker-view-column>
+                <view wx:for="{{nums}}" style="line-height: 50px">{{item}}{{dw}}</view>
+              </picker-view-column>
+            </picker-view>
+            <view class="checkYear">{{num}}{{dw}}</view>
+            <view bindtap='selectBtn' class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
+          </view>
+        </block>
       </block>
+      <!--右边客户答案  -->
       <block wx:else>
-        <view class='referRight'>
-          <view>{{selectCon}}</view>
-          <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-        </view>
+        <!--state 1 单选  -->
+        <block wx:if="{{postItem.state==1}}">
+          <view class='referRight'>
+            <view>{{selectCon}}</view>
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          </view>
+        </block>
+        <!--state 2 多选  -->
+        <block wx:elif='{{postItem.state==2}}'>
+          <view class='referRight'>
+            <view>
+              <text wx:for="{{selectArr}}" wx:for-index="index" wx:for-item="item">{{item}}  </text>
+            </view>
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          </view>
+        </block>
+        <!--state 3 填空  -->
+        <block wx:elif='{{postItem.state==3}}'>
+          <view class='referRight'>
+            <view>{{selectCon}}</view>
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          </view>
+        </block>
+        <!--state 4 日期  -->
+        <block wx:elif='{{postItem.state==4}}'>
+          <view class='referRight'>
+            <view>{{hour}}时{{minute}}分</view>
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          </view>
+        </block>
+        <!--state 5 年月日  -->
+        <block wx:elif='{{postItem.state==5}}'>
+          <view class='referRight'>
+            <view>{{year}}年{{month}}月{{day}}日</view>
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          </view>
+        </block>     
+        <!--state 6 数量  -->
+        <block wx:elif='{{postItem.state==6}}'>
+          <view class='referRight'>
+            <view>{{num}}{{dw}}</view>
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+          </view>
+        </block>
       </block>
     </view>
   </view>

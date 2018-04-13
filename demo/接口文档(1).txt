@@ -1,0 +1,876 @@
+/api/product/productlist.html?limit=10&page=1
+商品列表（使用分页），参数：limit（默认10）、page（默认1）
+{
+  "code": 0,
+  "msg": "",
+  "time": "1521600166",
+  "count": 13,
+  "data": [
+    {
+      "id": 1,
+      "title": "第二件商品",
+	  "cover_pic": "/uploads/20180316/687d81e28368c5468ec5f61cccde3e3c.png",	
+	  "cover_picPath": "https://weapp.huaxiajiyin.com/uploads/20180316/687d81e28368c5468ec5f61cccde3e3c.png", // 封面图
+	  "brief_introduction": "",// 简介
+      "onshelf": 1,
+      "create_time": "1970-01-01 08:00:00",
+      "update_time": "2018-03-21 10:33:17",
+    
+      "models": [
+        {
+          "id": 1,
+          "gid": 1,
+          "title": "啊啊啊",
+          "price": "1.00",
+          "storage": 1
+        }
+      ]
+    }
+  ]
+}
+
+======================
+======================
+
+/api/product/detail.html?gid=1
+商品详情，参数：gid
+{
+  "code": 0,
+  "msg": "",
+  "time": "1521599976",
+  "data": {
+    "id": 1,
+    "title": "第二件商品",
+    "pic": "/uploads/20180316/687d81e28368c5468ec5f61cccde3e3c.png",	// 详情背景
+	"picPath": "/uploads/20180316/687d81e28368c5468ec5f61cccde3e3c.png",
+	
+	"brief_introduction": "",// 简介
+	"buy_title": "",// 首页购买按钮标题
+    "desc": "",
+    "onshelf": 1,
+    "create_time": "1970-01-01 08:00:00",
+    "update_time": "2018-03-21 10:33:17",
+    
+    "models": [
+      {
+        "id": 6,
+        "gid": 1,
+        "title": "啊啊啊222",
+        "price": "222.00",
+        "storage": 33
+      }
+    ]
+  }
+}
+
+
+======================
+======================
+
+/api/cart/add.html?gid=1&gmid=1&num=1
+添加到购物车，参数：gid  商品ID，gmid  规格id，num  数量（小于1时从购物车删除）
+返回当前购物车
+{
+  "code": 0,
+  "msg": "",
+  "time": "1521683279",
+  "data": {
+    "totalPrice": 1,
+    "count": 1,
+    "items": [
+      {
+        "goods": {
+          "id": 1,
+          "title": "第二件商品",
+          "pic": "/uploads/20180316/687d81e28368c5468ec5f61cccde3e3c.png",
+          "onshelf": 1,
+          "create_time": "1970-01-01 08:00:00",
+          "update_time": "2018-03-21 17:10:51"
+        },
+        "goodsModel": {
+          "id": 1,
+          "gid": 1,
+          "title": "啊啊啊",
+          "price": "1.00",
+          "storage": 1
+        },
+        "num": 1
+      }
+    ],
+    "address": null,
+    "invoice_type": 1,
+    "invoice_extra": {
+      "content": 1,
+      "title": "个人",
+      "email": "aa@qq.com"
+    }
+  }
+}
+
+
+======================
+======================
+
+/api/cart/remove.html?gmids=1
+从购物车移除，参数gmids，支持批量.例：gmids=1,2,3,4
+返回当前购物车
+
+（返回数据参考上面的添加接口）
+
+
+======================
+======================
+
+/api/cart/bindaddress.html?uaid=1
+购物车-绑定收货地址，参数：uaid     用户地址ID
+
+
+（返回数据参考上面的商品添加接口）
+
+======================
+======================
+
+/api/cart/bindinvoice.html
+购物车-绑定发票
+
+参数：
+invoice_type				发票类型	(0不开，1增值电子，2增值纸质)
+invoice_content				发票内容	(0基因解读费，1咨询服务费)
+invoice_title_type			开票人		(0个人，1单位)
+
+invoice_title				单位名称	(invoice_type 为 1、2，invoice_title_type 为 1 时必填)
+invoice_tax_number			纳税人识别码(invoice_type 为 1、2，invoice_title_type 为 1 时必填)
+
+invoice_email				邮件地址	(invoice_type 为 1 时必填)
+
+invoice_company_reg_addr	公司注册地	(invoice_type 为 2 时必填)
+invoice_company_reg_phone	公司注册电话(invoice_type 为 2 时必填)
+invoice_company_bank		开户行		(invoice_type 为 2 时必填)
+invoice_company_bankno		银行卡号	(invoice_type 为 2 时必填)
+
+
+（返回数据参考上面的商品添加接口）
+
+======================
+======================
+
+/api/cart/builder.html
+生成订单
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1521682981",
+  "data": {
+    "orderid": "HX2018032209430135641",		// 订单号
+    "id": "20"								// 订单ID
+  }
+}
+
+
+======================
+======================
+
+/api/arealist.html?aid=0
+地区接口，参数：aid    0为中国（默认）
+返回区域详情，以及下级区域
+{
+  "code": 0,
+  "msg": "",
+  "time": "1521612117",
+  "data": {
+    "id": 0,
+    "name": "中国",
+    "pid": null,
+    "childens": [
+      {
+        "id": 110000,
+        "name": "北京市",
+        "pid": 0
+      },
+      {
+        "id": 120000,
+        "name": "天津市",
+        "pid": 0
+      }
+    ]
+  }
+}
+
+
+
+===============================================
+
+/api/order/orderlist.html?limit=10&page=1
+订单列表（使用分页），参数：limit（默认10）、page（默认1），status（待支付：0；已取消：1；待收货：2；已完成：3）
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1521770126",
+  "data": [
+    {
+      "id": 20,
+      "orderid": "HX2018032209430135641",
+      "uid": 1,
+      "detailinfo": [
+        {
+          "goodsId": 1,
+          "goodsTitle": "第二件商品",
+          "goodsModelId": 1,
+          "goodsModelTitle": "啊啊啊",
+          "goodsModelPrice": "1.00",
+          "buyNum": 1,
+          "totalPrice": 1
+        }
+      ],
+      "price": "1.00",
+      "status": 1,
+      "create_time": "2018-03-22 09:43:01"
+    }
+  ]
+}
+
+===============================================
+
+/api/order/detail.html?oid=18
+订单详情，参数：oid (订单ID)
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1521684743",
+  "data": {
+    "id": 18,
+    "orderid": "HX2018032209341382841",
+    "uid": 1,
+    "price": "1.00",		// 订单总金额
+    "detailinfo": [
+      {
+        "goodsId": 1,
+        "goodsTitle": "第二件商品",
+        "goodsModelId": 1,
+        "goodsModelTitle": "啊啊啊",
+        "goodsModelPrice": "1.00",
+        "buyNum": 1,		// 购买数量
+        "totalPrice": 1		// 商品价格小计
+      }
+    ],
+    "status": 100,			// 订单状态，0 已经支付，1 已经发货，2 已经收货，100 待支付，200 超时未支付，300 已关闭
+    "channel": 1,
+    "linker": "张三",
+    "mobile": "13800138000",
+    "address": "中国 北京市 东城区 东城区 xxxxx",
+    "sendtime": 0,			// 发货时间
+    "receivetime": 0,		// 收货时间
+    "deliverynum": "",		// 快递单号
+    "deliverycompany": "",	// 快递公司（ID字段）
+	"deliverycompanyTitle": "顺丰速递"
+    "invoice_type": 0,		// 发票类型
+    "invoice_extra": [],	// 发票扩展字段
+    "create_time": "2018-03-22 09:34:13",
+    "remark": "尽快发货"
+  }
+}
+
+======================
+======================
+
+/api/order/cancel.html?oid=18
+取消订单，参数：oid (订单ID)	订单状态为：100，200 时 可以关闭订单
+
+{
+  "code": 0,		// code 为0时 表示成功
+  "msg": "",
+  "time": "1521612117",
+  "data": {}
+}
+
+======================
+======================
+
+/api/order/confirmreceipt.html?oid=18
+确认收货，参数：oid (订单ID)	订单状态为：1 时 可以确认收货
+
+{
+  "code": 0,		// code 为0时 表示成功
+  "msg": "",
+  "time": "1521612117",
+  "data": {}
+}
+
+======================
+======================
+
+/api/pay/sign.html?oid=20
+支付订单签名，参数：oid (订单ID)	订单状态为：100 时 可以付款
+
+（返回参数字段 参考微信官方文档）
+
+-----------------------------------------------------
+
+/api/member/addresslist.html
+地址列表
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1521712958",
+  "data": [
+    {
+      "id": 1,
+      "uid": 1,
+      "linker": "张三",
+	  "idcard": 361024100000005124,
+      "mobile": "13800138000",
+      "country": 0,
+      "province": 110000,
+      "city": 110100,
+      "district": 110100,
+      "address": "xxxxx",
+      "create_time": "1970-01-01 08:00:00",
+      "update_time": "1970-01-01 08:00:00"
+    }
+  ]
+}
+
+
+======================
+======================
+
+
+/api/member/address.html?aid=20
+地址详情，参数：aid (地址ID)
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1521712958",
+  "data": {
+    "id": 1,
+    "uid": 1,
+    "linker": "张三",
+    "mobile": "13800138000",
+    "country": 0,
+    "province": 110000,
+    "city": 110100,
+    "district": 110100,
+    "address": "xxxxx",
+    "create_time": "1970-01-01 08:00:00",
+    "update_time": "1970-01-01 08:00:00"
+  }
+}
+
+======================
+======================
+
+/api/member/addressmodify.html
+修改地址，参数：
+aid：		地址ID					Int
+linker：	收件人    				String
+idcard:		收件人身份证			String(18)
+mobile：	联系电话				String
+country：	国家（地区接口：id）	Int
+province：	省（地区接口：id）		Int
+city：		市（地区接口：id）		Int
+district：	区（地区接口：id）		Int
+address:	详细地址				String
+
+（返回参数参考 详情接口）
+
+======================
+======================
+
+/api/member/addressadd.html
+添加地址，参数：
+（参数参考修改方法）
+
+（返回参数参考 详情接口）
+
+======================
+======================
+
+/api/member/addressdel.html
+删除地址，参数：
+aid：		地址ID					Int
+
+======================
+======================
+
+/api/member/lottery
+抽奖，参数：无
+
+返回结果：
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522042112",
+  "data": {
+    "score": 0.49
+  }
+}
+
+======================
+======================
+
+/api/member/detail
+用户详情
+
+返回结果：
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522132895",
+  "data": {
+    "id": 36,
+    "username": "",
+    "nickname": "Passer",
+    "phone": "",
+    "status": 1,
+    "sessionid_3rd": "a04cd14bf51e64794dd32e6eba0a0e44",
+    "balance": "0.00",
+    "invitepeople": 0,
+    "create_time": "2018-03-26 17:35:55",
+    "invite_code": "A6",
+    "luck_draw": false
+  }
+}
+
+======================
+======================
+
+/api/member/transactionRecord
+账号余额变更记录
+
+返回结果：
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522132695",
+  "count": 28,
+  "page_count": 3,
+  "data": [
+    {
+      "id": 42,
+      "operation": "2",
+      "score": "0.33",
+      "desc": "新用户抽奖",
+      "create_time": "2018-03-27 10:49:31"
+    }
+  ]
+}
+
+======================
+======================
+
+/api/index/sharing_activity.html
+分享领红包详情接口
+
+返回结果：
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522316093",
+  "data": {
+    "sharing_activity_attention": "",	// 注意事项
+    "sharing_activity_limit_time": [	// 活动持续时间
+      "2018-03-01",		// 开始时间
+      "2018-03-23"		// 结束时间
+    ], 
+    "sharing_activity_open": "off",		// 总开关（on/off）当off时 隐藏活动入口
+    "sharing_activity_rules": "",		// 活动规则
+    "sharing_activity_title_pic": "",	// 分享详情 宣传语图片
+    "luck_draw": true,		// 是否已抽奖
+    "luck_draw_amount": "0.20",	// 抽奖金额
+    "friend_num": 0,	// 好友数（已邀请的会员数）
+  }
+}
+
+======================
+======================
+
+/api/index/setting.html
+基础设置接口
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522381434",
+  "data": {
+    "user_protocol": "", // 用户购买协议
+  }
+}
+
+
+======================
+======================
+
+/api/forum/forum_list.html
+专区列表（使用分页），参数：limit（默认10）、page（默认1）
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522480496",
+  "count": 2,
+  "page_count": 1,
+  "data": [
+    {
+      "id": 2,
+      "name": "肥胖基因检测健康讲座",
+      "desc": "",
+      "pic": "https://weapp.huaxiajiyin.com/uploads/20180331/844ff06cae7e99fec68babf66a670706.png",
+      "mid": 1,
+      "sort": 1,
+	  "follow_num" : 0, // 专区关注人数
+      "create_time": "2018-03-31 13:59:02",
+      "update_time": "2018-03-31 15:14:53",
+      "status": 0,
+      "manage": {
+        "id": 1,
+        "username": "admin",
+        "nickname": "超级管理员",
+        "pic": "",
+        "phone": "13800138000",
+        "role": 2,
+        "enable": 1
+      }
+    }
+  ]
+}
+
+======================
+======================
+
+/api/forum/thread_list.html?fid=2
+专区文章列表（使用分页），参数：limit（默认10）、page（默认1）、fid（专区ID）
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522480908",
+  "count": 1,
+  "page_count": 1,
+  "data": [
+    {
+      "id": 1,
+      "fid": 2,
+      "subject": "什么样的皮肤适合什么样的护肤品？",
+      "tags": "护肤品",
+      "media_title": "qq",
+      "media_path": "https://sample.com/sample.mp3",
+      "media_size": 151511,
+      "desc": "<p>护肤品护肤品护肤品护肤品护肤品护肤品</p><p><br></p><p><br></p><p>xasxa</p>",
+      "authorid": 1,
+      "author": "超级管理员",
+      "create_time": "2018-03-31 14:50:12",
+      "update_time": "2018-03-31 15:21:13"
+    }
+  ]
+}
+
+======================
+======================
+
+/api/forum/thread.html?tid=2
+文章详情，参数：tid（主题ID），msg（评论内容）
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1523154607",
+  "data": {
+    "id": 1,
+    "fid": 2,
+    "subject": "什么样的皮肤适合什么样的护肤品？",
+    "tags": "护肤品",
+    "media_title": "qq",
+    "media_path": "https://weapp.huaxiajiyin.com/uploads/media/20180402/24.mp3",
+    "media_size": 151511,
+    "desc": "<p>护肤品护肤品护肤品护肤品护肤品护肤品</p><p><br></p><p><br></p><p>xasxa</p>",
+    "authorid": 1,
+    "author": "超级管理员",
+    "create_time": "2018-03-31 14:50:12",
+    "update_time": "2018-04-02 18:08:55",
+    "follow": false,
+    "fabulous": false,//是否已关注专区
+    "fabulous_sum": 1,//点赞人数
+    "post_sum": 10, // 评论量
+    "forum": {
+      "id": 2,
+      "name": "肥胖基因检测健康讲座",
+      "desc": "",
+      "pic": "https://weapp.huaxiajiyin.com/uploads/20180331/844ff06cae7e99fec68babf66a670706.png",
+      "mid": 2,
+      "sort": 1,
+      "create_time": "2018-03-31 13:59:02",
+      "update_time": "2018-04-08 10:25:27",
+      "status": 0,
+      "manage": {
+        "id": 2,
+        "username": "wys",
+        "nickname": "王医生",
+        "pic": "https://weapp.huaxiajiyin.com/uploads/20180408/481ba3abb7835ca9cb0a9e2e9b4f568b.png",	//专区主题主讲人大图
+        "avatar": "https://weapp.huaxiajiyin.com/uploads/20180408/d7878fe823813f01fe6c97d3c55c2fa9.png",	//头像
+        "phone": "13800138000",
+        "role": 1,
+        "enable": 1
+      }
+    }
+  }
+}
+
+
+======================
+======================
+
+/api/forum/post_list.html?tid=2
+文章评论列表（使用分页），参数：limit（默认10）、page（默认1）、tid（主题ID）
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522482721",
+  "count": 1,
+  "page_count": 1,
+  "data": [{
+    "fid": 2,
+    "author": "Z.Z",
+    "authorid": 37,
+    "subject": "",
+    "message": "11",
+    "status": 0,
+    "tid": 1,
+    "create_time": "2018-03-31 15:52:02",
+    "update_time": "2018-03-31 15:52:02",
+    "id": "1"
+  }]
+}
+
+
+======================
+======================
+
+/api/forum/post.html?tid=2
+文章评论，参数：tid（主题ID），msg（评论内容）
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522482721",
+  "data": {
+    "fid": 2,
+    "author": "Z.Z",
+    "authorid": 37,
+    "subject": "",
+    "message": "11",
+    "status": 0,
+    "tid": 1,
+    "create_time": "2018-03-31 15:52:02",
+    "update_time": "2018-03-31 15:52:02",
+    "id": "1"
+  }
+}
+
+======================
+======================
+
+/api/forum/follow_experts.html?fid=2
+
+关注专区，参数：fid（专区ID），follow（1：关注，0：取消关注）
+
+
+======================
+======================
+
+/api/forum/fabulous.html?tid=2
+
+主题点赞，参数：tid（专区ID），praise（1：赞，0：取消赞）
+
+
+======================
+======================
+
+/api/inspector/person_list.html
+
+检测人列表
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522749187",
+  "data": [
+    {
+      "id": 1,
+      "uid": 37,
+      "name": "张三",
+      "phone": "13800138000",
+      "sex": 0,
+      "idcard": "261024190001011234"
+    }
+  ]
+}
+
+======================
+======================
+
+/api/inspector/person_add.html
+
+新增检测人
+参数：
+name		String		姓名
+phone		String		手机号
+sex			Bit			性别（0：男；1：女）
+idcard		String		身份证ID
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522749187",
+  "data": {
+      "id": 1,
+      "uid": 37,
+      "name": "张三",
+      "phone": "13800138000",
+      "sex": 0,
+      "idcard": "261024190001011234"
+    }
+}
+
+======================
+======================
+
+/api/inspector/person.html
+
+检测人详情
+参数：
+uiid		Int			检测人ID
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522749187",
+  "data": {
+      "id": 1,
+      "uid": 37,
+      "name": "张三",
+      "phone": "13800138000",
+      "sex": 0,
+      "idcard": "261024190001011234"
+    }
+}
+
+======================
+======================
+
+/api/inspector/person_modify.html
+
+编辑检测人
+参数：
+uiid		Int			检测人ID
+name		String		姓名
+phone		String		手机号
+sex			Bit			性别（0：男；1：女）
+idcard		String		身份证ID
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522749187",
+  "data": {
+      "id": 1,
+      "uid": 37,
+      "name": "张三",
+      "phone": "13800138000",
+      "sex": 0,
+      "idcard": "261024190001011234"
+    }
+}
+
+
+======================
+======================
+
+/api/inspector/person_del.html
+
+删除检测人
+参数：
+uiid		Int			检测人ID
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1522749187",
+  "data": []
+}
+
+
+======================
+======================
+
+/api/inspector/reportlist.html
+
+获取已绑定的检测编码
+参数：无参
+{
+  "code": 0,
+  "msg": "",
+  "time": "1523242576",
+  "data": [
+    {
+      "id": 1,
+      "oid": 121,										// 订单ID
+      "bar_code": "9060928696605700",					// 检测编码
+	  "uiid": 1,										// 检测人ID
+	  "report_path": "https://baidu.com/1111.pdf",		// 检测报告下载地址
+	  "report_time": "2018-03-31 15:52:02",				// 报告上传时间
+	  "create_time": "2018-03-31 15:52:02",				// 检测编码生成时间
+    }
+  ]
+}
+
+
+======================
+======================
+
+/api/inspector/unbind_reportlist.html
+
+获取未绑定的检测编码
+参数：无参
+{
+  "code": 0,
+  "msg": "",
+  "time": "1523242576",
+  "data": [
+    {
+      "id": 1,
+      "oid": 121,
+      "bar_code": "9060928696605700"
+    }
+  ]
+}
+
+======================
+======================
+
+/api/inspector/bindperson.html
+
+绑定检测编码
+参数：
+uiid		Int		检测人ID
+rid			Int		检测报告ID
+
+{
+  "code": 0,
+  "msg": "",
+  "time": "1523242576",
+  "data": [
+    {
+      "id": 1,
+      "oid": 121,
+      "bar_code": "9060928696605700"
+    }
+  ]
+}
+
+

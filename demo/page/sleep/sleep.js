@@ -1,8 +1,34 @@
 var postData = require("../data/post-data.js");
+
+const date = new Date()
+const years = []
+const months = []
+const days = []
+const hours = []
+const minutes = []
+
+for (let i = 1990; i <= date.getFullYear(); i++) {
+  years.push(i)
+}
+
+for (let i = 1; i <= 12; i++) {
+  months.push(i)
+}
+for (let i = 1; i <= 31; i++) {
+  days.push(i)
+}
+for (let i = 0; i <= 23; i++) {
+  hours.push(i)
+}
+for (let i = 0; i <= 59; i++) {
+  minutes.push(i)
+}
 Page({
+  // state   1:单选  2:多选  3:填空  4:日期  5:年月日   6:数量
   data: {
     postList: postData.postList,   //所有的数据列表
     postItem: postData.postList[0],  //默认只显示第一条数据
+    dataArray: [],          //向后台提交数据时的总数据
     currentIndex: 1,       //当前页面的第一条数据
     index: 0,             //内容里面的默认当前第一个作为标识
     selectBg: '#7db876',   //选中框的背景颜色
@@ -17,11 +43,54 @@ Page({
     userInfo: {},           //用户信息存放
     selectCon: "",          //临时用来存放框中数据
     id: 100000,
+    defaultValue: "没有或不知道...",
+    textValue: "下一题",
+    years: years,
+    year: date.getFullYear(),
+    months: months,
+    month: 2,
+    days: days,
+    day: 2,
+    hours: hours,
+    hour: "23",
+    minutes: minutes,
+    minute: "1",
+    value: [9999, 1, 1],
+    nums: [],
+    num: 0,
+    dw: "",
+    ch: 0,
   },
   onLoad: function () {
     this.getUserInfo();
     this.getProgress();
-    console.log(this.data.postList[0])
+    this.state();
+  },
+  // 获取数量
+  getNum: function () {
+    var min = this.data.postItem.min;
+    var max = this.data.postItem.max;
+    var ch = this.data.postItem.ch;
+    var dw = this.data.postItem.dw;
+    var nums = [];
+    for (var i = min; i <= max; i = i + ch) {
+      console.log(i)
+      nums.push(i)
+    }
+    this.setData({
+      nums: nums,
+      ch: ch,
+      dw: dw,
+    })
+    console.log(nums)
+  },
+  //判断状态
+  state:function(){
+    var state = this.data.postItem.state;
+    if (state == 6) {
+      console.log(111)
+      this.getNum();
+    }
   },
   // 获取进度条 
   getProgress: function () {
@@ -41,18 +110,99 @@ Page({
       }
     })
   },
+  // 获取年月  时分  数量
+  bindChange: function (e) {
+    var state = this.data.postItem.state;
+    const val = e.detail.value;
+    console.log(e,state);
+    if (state == 4) {
+      this.setData({
+        hour: val[0],
+        minute: val[1],
+      })
+    } else if (state == 5) {
+      this.setData({
+        year: this.data.years[val[0]],
+        month: this.data.months[val[1]],
+        day: this.data.days[val[2]],
+      })
+    } else if(state==6) {
+      this.setData({
+        num:this.data.nums[val[0]],
+      })
+    }
+  },
+  // 获取多选框里携带的值 
+  checkboxChange: function (e) {
+    var selectArr = e.detail.value;
+    if (selectArr != "") {
+      this.setData({
+        defaultValue: '选好了，下一题',
+        selectArr: selectArr,
+      })
+    } else {
+      this.setData({
+        defaultValue: '没有或不知道...',
+      })
+    }
+
+  },
+  // 获取textarea的内容
+  areaChange: function (e) {
+    var selectCon = e.detail.value;
+    if (selectCon != "") {
+      this.setData({
+        selectCon: selectCon,
+      })
+    }
+  },
   // 选择点击按钮
   selectBtn: function (e) {
-    var id = e.currentTarget.dataset.item;
-    var selectCon = this.data.postItem.content[id];
-    this.setData({
-      id: id,
-      selectCon: selectCon,
-    })
+    var state = this.data.postItem.state;
+    if (state == 1) {
+      var id = e.currentTarget.dataset.item;
+      var selectCon = this.data.postItem.content[id];
+      this.setData({
+        id: id,
+        selectCon: selectCon,
+      })
+    }
+    else if (state == 2) {
+      if (this.data.selectArr != 0) {
+        this.setData({
+          selectArr: this.data.selectArr,
+          isSelect: true,
+        })
+      } else {
+        this.setData({
+          selectArr: ["没有或不知道"]
+        })
+      }
+    }
+    else if (state == 3) {
+      if (this.data.selectCon != "") {
+        this.setData({
+          selectCon: this.data.selectCon,
+          isSelect: true,
+        })
+      } else {
+        this.setData({
+          selectCon: "补充完整情况，结果越准确哦"
+        })
+      }
+    } else {
+      this.setData({
+        isSelect: true,
+        year: this.data.year,
+        month: this.data.month,
+        day: this.data.day,
+      })
+    }
     var that = this;
     setTimeout(function () {
       that.setData({
         hidden: false,
+
       })
     }, 200)
     // 获取高
@@ -74,6 +224,8 @@ Page({
       index: 0,
       id: 10000,
     })
+    this.state();
+    this.getProgress();
   },
   alertTit: function (title) {
     wx.showToast({
