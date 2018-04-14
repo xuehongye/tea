@@ -81,6 +81,7 @@ Page({
       nums: nums,
       ch: ch,
       dw: dw,
+      num:nums[0]
     })
     console.log(nums)
   },
@@ -114,7 +115,6 @@ Page({
   bindChange: function (e) {
     var state = this.data.postItem.state;
     const val = e.detail.value;
-    console.log(e,state);
     if (state == 4) {
       this.setData({
         hour: val[0],
@@ -155,10 +155,13 @@ Page({
         selectCon: selectCon,
       })
     }
+    console.log(this.data.selectCon)
   },
   // 选择点击按钮
   selectBtn: function (e) {
     var state = this.data.postItem.state;
+    var nameId = e.currentTarget.dataset.id;
+    var checkArray = [];
     if (state == 1) {
       var id = e.currentTarget.dataset.item;
       var selectCon = this.data.postItem.content[id];
@@ -166,6 +169,12 @@ Page({
         id: id,
         selectCon: selectCon,
       })
+      var checkCon = e.currentTarget.dataset.con;
+      var conArr = [];
+      conArr.push(checkCon)
+      checkArray = [{ nameId: nameId, checkCon: conArr }];
+      this.data.dataArray.push(checkArray);
+      console.log(this.data.dataArray)
     }
     else if (state == 2) {
       if (this.data.selectArr != 0) {
@@ -178,8 +187,13 @@ Page({
           selectArr: ["没有或不知道"]
         })
       }
+      var selectArr = this.data.selectArr;
+      checkArray = [{ nameId: nameId, checkCon: selectArr }];
+      this.data.dataArray.push(checkArray)
+      console.log(this.data.dataArray)
     }
     else if (state == 3) {
+      console.log(this.data.selectCon)
       if (this.data.selectCon != "") {
         this.setData({
           selectCon: this.data.selectCon,
@@ -190,19 +204,42 @@ Page({
           selectCon: "补充完整情况，结果越准确哦"
         })
       }
-    } else {
+      var selectCon = this.data.selectCon;
+      checkArray = [{ nameId: nameId, checkCon: [selectCon]}];
+      this.data.dataArray.push(checkArray)
+      console.log(this.data.dataArray)
+    } 
+    else if(state==4){
       this.setData({
         isSelect: true,
-        year: this.data.year,
-        month: this.data.month,
-        day: this.data.day,
       })
+      var selectArr = this.data.hour + '时' + this.data.minute+'分';
+      checkArray = [{ nameId: nameId, checkCon: [selectArr]}];
+      this.data.dataArray.push(checkArray)
+      console.log(this.data.dataArray)
+    }
+    else if(state==5){
+      this.setData({
+        isSelect: true,
+      })
+      var selectArr = this.data.year + '年' + this.data.month + '月'+this.data.day+'日';
+      checkArray = [{ nameId: nameId, checkCon: [selectArr] }];
+      this.data.dataArray.push(checkArray)
+      console.log(this.data.dataArray)
+    }
+    else if(state==6){
+      this.setData({
+        isSelect: true,
+      })
+      var selectArr = this.data.num + this.data.dw;
+      checkArray = [{ nameId: nameId, checkCon: [selectArr] }];
+      this.data.dataArray.push(checkArray)
+      console.log(this.data.dataArray)
     }
     var that = this;
     setTimeout(function () {
       that.setData({
         hidden: false,
-
       })
     }, 200)
     // 获取高
@@ -220,7 +257,9 @@ Page({
     this.setData({
       postItem: postData.postList[this.data.currentIndex],
       currentIndex: this.data.currentIndex + 1,
+      selectArr:[],
       hidden: true,
+      selectCon:'',
       index: 0,
       id: 10000,
     })

@@ -20,7 +20,7 @@
         <!--state 1  单选  -->
         <block wx:if="{{postItem.state==1}}">
           <view class='selectCheck'>
-            <view data-item="{{index}}" wx:for="{{postItem.content}}" wx:for-index="index" wx:for-item="item" bindtap="btnOpClick" style="background:{{id==index?selectBg:defaultBg}};border:1rpx solid {{id==index?'':defaultBd}};color:{{id==index?selectText:defaultText}}"
+            <view data-item="{{index}}" data-id='{{postItem.id}}' data-con="{{item}}" wx:for="{{postItem.content}}" wx:for-index="index" wx:for-item="item" bindtap="btnOpClick" style="background:{{id==index?selectBg:defaultBg}};border:1rpx solid {{id==index?'':defaultBd}};color:{{id==index?selectText:defaultText}}"
               bindtap='selectBtn'>{{item}}</view>
           </view>
         </block>
@@ -33,14 +33,14 @@
                 <checkbox value="{{item}}" checked="{{item.checked}}" />{{item}}
               </label>
             </checkbox-group>
-            <view class="{{isSelect?'defaultValue activeValue':'defaultValue'}}" data-item='{{index}}' bindtap='selectBtn'>{{defaultValue}}</view>
+            <view class="{{isSelect?'defaultValue activeValue':'defaultValue'}}" data-id="{{postItem.id}}" data-item='{{index}}' bindtap='selectBtn'>{{defaultValue}}</view>
           </view>
         </block>
         <!--state 3 填空  -->
         <block wx:elif='{{postItem.state==3}}'>
           <view class='selectCheck'>
-            <textarea placeholder='{{item}}' bindblur='areaChange' wx:for="{{postItem.content}}" placeholder-style='color:#ccc;font-size:32rpx;' />
-            <view data-item='{{index}}' bindtap='selectBtn' class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
+            <textarea placeholder='{{item}}' bindinput='areaChange' wx:for="{{postItem.content}}" placeholder-style='color:#ccc;font-size:32rpx;' />
+            <view data-item='{{index}}' data-id="{{postItem.id}}" bindtap='selectBtn' class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
           </view>
         </block>
         <!--state 4 日期  -->
@@ -55,7 +55,7 @@
               </picker-view-column>
             </picker-view>
             <view class="checkYear">{{hour}}时{{minute}}分</view>
-            <view bindtap='selectBtn' class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
+            <view bindtap='selectBtn' data-id="{{postItem.id}}" class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
           </view>
         </block>
         <!--state 5 年月日  -->
@@ -73,7 +73,7 @@
               </picker-view-column>
             </picker-view>
             <view class="checkYear">{{year}}年{{month}}月{{day}}日</view>
-            <view bindtap='selectBtn' class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
+            <view bindtap='selectBtn' data-id="{{postItem.id}}" class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
           </view>
         </block>
         <!--state 6 数量  -->
@@ -85,7 +85,7 @@
               </picker-view-column>
             </picker-view>
             <view class="checkYear">{{num}}{{dw}}</view>
-            <view bindtap='selectBtn' class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
+            <view bindtap='selectBtn' data-id="{{postItem.id}}" class="{{isSelect?'defaultValue activeValue':'defaultValue'}}">{{textValue}}</view>
           </view>
         </block>
       </block>
